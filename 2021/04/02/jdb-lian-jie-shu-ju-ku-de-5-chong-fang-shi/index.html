@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Java中关于自定义异常的问题, GML">
+    <meta name="keywords" content="JDBC连接数据库的5种方式, GML">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Java中关于自定义异常的问题 | GML</title>
+    <title>JDBC连接数据库的5种方式 | GML</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Java中关于自定义异常的问题</h1>
+                    <h1 class="description center-align post-title">JDBC连接数据库的5种方式</h1>
                 </div>
             </div>
         </div>
@@ -467,51 +467,35 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="我们在写程序的过程中，往往需要自己定义一个异常，比如：在输入学生成绩信息的时候，往往需要限定一个范围，因为分数是从0到100的（假设成绩满分是100分），这个时候想让输入成绩在0到100范围外程序运行时抛出一个异常，这时该怎么做？这就需要我们自己定义一个异常了，因为IDEA不知道这是一个异常，下面是具体做法："><a href="#我们在写程序的过程中，往往需要自己定义一个异常，比如：在输入学生成绩信息的时候，往往需要限定一个范围，因为分数是从0到100的（假设成绩满分是100分），这个时候想让输入成绩在0到100范围外程序运行时抛出一个异常，这时该怎么做？这就需要我们自己定义一个异常了，因为IDEA不知道这是一个异常，下面是具体做法：" class="headerlink" title="我们在写程序的过程中，往往需要自己定义一个异常，比如：在输入学生成绩信息的时候，往往需要限定一个范围，因为分数是从0到100的（假设成绩满分是100分），这个时候想让输入成绩在0到100范围外程序运行时抛出一个异常，这时该怎么做？这就需要我们自己定义一个异常了，因为IDEA不知道这是一个异常，下面是具体做法："></a>我们在写程序的过程中，往往需要自己定义一个异常，比如：在输入学生成绩信息的时候，往往需要限定一个范围，因为分数是从0到100的（假设成绩满分是100分），这个时候想让输入成绩在0到100范围外程序运行时抛出一个异常，这时该怎么做？这就需要我们自己定义一个异常了，因为IDEA不知道这是一个异常，下面是具体做法：</h3><h3 id="首先定义一个异常类fenshuyichang继承Exception类"><a href="#首先定义一个异常类fenshuyichang继承Exception类" class="headerlink" title="首先定义一个异常类fenshuyichang继承Exception类"></a>首先定义一个异常类fenshuyichang继承Exception类</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">yc</span><span class="token punctuation">;</span>
+                <h2 id="JDBC连接数据库的5种方式"><a href="#JDBC连接数据库的5种方式" class="headerlink" title="JDBC连接数据库的5种方式"></a>JDBC连接数据库的5种方式</h2><h3 id="方式一："><a href="#方式一：" class="headerlink" title="方式一："></a>方式一：</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token class-name">JavaJDBC</span><span class="token punctuation">;</span>
 
-<span class="token keyword">public</span> <span class="token keyword">class</span> fenshuyichang <span class="token keyword">extends</span> <span class="token class-name">Exception</span><span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token function">fenshuyichang</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token comment">//无参构造</span>
-    <span class="token keyword">public</span> <span class="token function">fenshuyichang</span><span class="token punctuation">(</span><span class="token class-name">String</span> message<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>  <span class="token comment">//有参构造</span>
-        <span class="token keyword">super</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//调用父类的有参构造，super关键字必须要在第一行</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>sql<span class="token punctuation">.</span></span><span class="token class-name">Connection</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>sql<span class="token punctuation">.</span></span><span class="token class-name">Driver</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>sql<span class="token punctuation">.</span></span><span class="token class-name">SQLException</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Properties</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * @author gml
+ * @date 2021/3/31
+ **/</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JDBCConnection1</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">SQLException</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">Driver</span> driver <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token namespace">com<span class="token punctuation">.</span>mysql<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span></span>Driver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">String</span> url <span class="token operator">=</span> <span class="token string">"jdbc:mysql://localhost:3306/book"</span><span class="token punctuation">;</span>
+        <span class="token class-name">Properties</span> info <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Properties</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        info<span class="token punctuation">.</span><span class="token function">setProperty</span><span class="token punctuation">(</span><span class="token string">"user"</span><span class="token punctuation">,</span><span class="token string">"你的用户名"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        info<span class="token punctuation">.</span><span class="token function">setProperty</span><span class="token punctuation">(</span><span class="token string">"password"</span><span class="token punctuation">,</span><span class="token string">"你的密码"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Connection</span> connect <span class="token operator">=</span> driver<span class="token punctuation">.</span><span class="token function">connect</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span>info<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>connect<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <hr>
-<h2 id="然后定义一个teacher类"><a href="#然后定义一个teacher类" class="headerlink" title="然后定义一个teacher类"></a>然后定义一个teacher类</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">yc</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Scanner</span><span class="token punctuation">;</span>
-
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Teacher</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> fenshu <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token punctuation">)</span> <span class="token keyword">throws</span> fenshuyichang<span class="token comment">//抛出异常，以后谁调用这个方法，谁来处理此异常&#123;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">&lt;</span><span class="token number">0</span><span class="token operator">||</span>i<span class="token operator">></span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token function">fenshuyichang</span><span class="token punctuation">(</span><span class="token string">"你输入的分数有误，分数应在0到100之间"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//抛出异常类的对象</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">else</span><span class="token punctuation">&#123;</span>
-            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"分数正常"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<hr>
-<h2 id="然后写main方法，输入分数，并且调用fenshu方法来判断分数是否正常"><a href="#然后写main方法，输入分数，并且调用fenshu方法来判断分数是否正常" class="headerlink" title="然后写main方法，输入分数，并且调用fenshu方法来判断分数是否正常"></a>然后写main方法，输入分数，并且调用fenshu方法来判断分数是否正常</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">yc</span><span class="token punctuation">;</span>
-
-<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Scanner</span><span class="token punctuation">;</span>
-
-<span class="token keyword">public</span> <span class="token keyword">class</span> shuru <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token class-name">Scanner</span> i<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Scanner</span><span class="token punctuation">(</span><span class="token class-name">System</span><span class="token punctuation">.</span>in<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> a<span class="token operator">=</span>i<span class="token punctuation">.</span><span class="token function">nextInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token class-name">Teacher</span> teacher <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Teacher</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
-            teacher<span class="token punctuation">.</span><span class="token function">fenshu</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">catch</span> <span class="token punctuation">(</span>fenshuyichang b<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-            b<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>运行结果：<br>由于分数在0到100之间，所以分数正常<img src="https://img-blog.csdnimg.cn/20201108132556604.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODM2OTIy,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>由于分数不在0-100之间，所以Java提示异常<img src="https://img-blog.csdnimg.cn/20201108132854593.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODM2OTIy,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/20201108132727410.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODM2OTIy,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>以上就是自定义异常的内容</p>
+<p>连接数据库要获取一个Connection对象</p>
+<p>这里首先创建一个Driver实现类的对象driver，然后调用driver里面的connect()方法返回一个Connection对象（也就是获取一个连接），这里会调用com.mysql.jdbc.Driver实现类里面的方法（多态，编译看左，运行看右），这里面的方法是mysql数据库厂商自己写的，用来连接mysql数据库。调用connect方法需要传两个参数一个是String型的url，一个是Properties类型的info，其中url用来告诉connect数据库地址在哪，info用来打开数据库的大门，也就是用户名密码，所以要创建String类型的url，初始化为mysql数据库地址”jdbc:mysql://localhost:3306/数据库名“，随后要创建一个Properties类型的info用来存储用户名密码，调用setProperty方法</p>
+<blockquote>
+<p>info.setProperty(“user”,”你的用户名”);&lt;<br>这里的key（第一个参数）要写user，不要改名字，否则调用connect时会找不到用户名；<br>value（第二个参数）写你的用户名；<br>info.setProperty(“password”,”你的密码”);&lt;<br>同上；<br>到此数据库连接成功，这时打印一下connect。看是否报错。</p>
+</blockquote>
 
                 
             </div>
@@ -538,7 +522,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://gongmiaolei.github.io/2021/04/02/java-zhong-guan-yu-zi-ding-yi-yi-chang-de-wen-ti/">http://gongmiaolei.github.io/2021/04/02/java-zhong-guan-yu-zi-ding-yi-yi-chang-de-wen-ti/</a>
+                    <a href="http://gongmiaolei.github.io/2021/04/02/jdb-lian-jie-shu-ju-ku-de-5-chong-fang-shi/">http://gongmiaolei.github.io/2021/04/02/jdb-lian-jie-shu-ju-ku-de-5-chong-fang-shi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -743,9 +727,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/04/02/jdb-lian-jie-shu-ju-ku-de-5-chong-fang-shi/">
                     <div class="card-image">
@@ -763,9 +748,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-02
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-02
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -774,6 +759,7 @@
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -781,7 +767,7 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/2021/04/02/java-zhong-guan-yu-zi-ding-yi-yi-chang-de-wen-ti/">
@@ -811,7 +797,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
