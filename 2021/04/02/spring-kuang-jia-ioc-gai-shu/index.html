@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Java中关于自定义异常的问题, GML">
+    <meta name="keywords" content="Spring框架IOC概述, GML">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Java中关于自定义异常的问题 | GML</title>
+    <title>Spring框架IOC概述 | GML</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Java中关于自定义异常的问题</h1>
+                    <h1 class="description center-align post-title">Spring框架IOC概述</h1>
                 </div>
             </div>
         </div>
@@ -467,51 +467,120 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="我们在写程序的过程中，往往需要自己定义一个异常，比如：在输入学生成绩信息的时候，往往需要限定一个范围，因为分数是从0到100的（假设成绩满分是100分），这个时候想让输入成绩在0到100范围外程序运行时抛出一个异常，这时该怎么做？这就需要我们自己定义一个异常了，因为IDEA不知道这是一个异常，下面是具体做法："><a href="#我们在写程序的过程中，往往需要自己定义一个异常，比如：在输入学生成绩信息的时候，往往需要限定一个范围，因为分数是从0到100的（假设成绩满分是100分），这个时候想让输入成绩在0到100范围外程序运行时抛出一个异常，这时该怎么做？这就需要我们自己定义一个异常了，因为IDEA不知道这是一个异常，下面是具体做法：" class="headerlink" title="我们在写程序的过程中，往往需要自己定义一个异常，比如：在输入学生成绩信息的时候，往往需要限定一个范围，因为分数是从0到100的（假设成绩满分是100分），这个时候想让输入成绩在0到100范围外程序运行时抛出一个异常，这时该怎么做？这就需要我们自己定义一个异常了，因为IDEA不知道这是一个异常，下面是具体做法："></a>我们在写程序的过程中，往往需要自己定义一个异常，比如：在输入学生成绩信息的时候，往往需要限定一个范围，因为分数是从0到100的（假设成绩满分是100分），这个时候想让输入成绩在0到100范围外程序运行时抛出一个异常，这时该怎么做？这就需要我们自己定义一个异常了，因为IDEA不知道这是一个异常，下面是具体做法：</h3><h3 id="首先定义一个异常类fenshuyichang继承Exception类"><a href="#首先定义一个异常类fenshuyichang继承Exception类" class="headerlink" title="首先定义一个异常类fenshuyichang继承Exception类"></a>首先定义一个异常类fenshuyichang继承Exception类</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">yc</span><span class="token punctuation">;</span>
+                <h2 id="Spring框架IOC概述"><a href="#Spring框架IOC概述" class="headerlink" title="Spring框架IOC概述"></a>Spring框架IOC概述</h2><h3 id="1-什么是Spring-为什么会有Spring，以及Spring能干什么？"><a href="#1-什么是Spring-为什么会有Spring，以及Spring能干什么？" class="headerlink" title="1.什么是Spring? 为什么会有Spring，以及Spring能干什么？"></a>1.什么是Spring? 为什么会有Spring，以及Spring能干什么？</h3><p>Spring是一个开源框架，它由Rod Johnson创建。它是为了解决企业应用开发的复杂性而创建的。 Spring为简化企业级开发而生，使用Spring，JavaBean就可以实现很多以前要靠EJB才能实现的功能。同样的功能，在EJB中要通过繁琐的配置和复杂的代码才能够实现，而在Spring中却非常的优雅和简洁。Spring是一个IOC(DI)和AOP容器框架。下面来详细说说什么是IOC容器。</p>
+<h3 id="什么是IOC容器？"><a href="#什么是IOC容器？" class="headerlink" title="什么是IOC容器？"></a>什么是IOC容器？</h3><p>IOC ( Inversion Of Control ) 即控制反转，控制就是资源的获取方式，获取方式又分两种:</p>
+<h3 id="1-主动获取"><a href="#1-主动获取" class="headerlink" title="1.主动获取"></a>1.主动获取</h3><p>主动获取就是我们经常用的方式，即 要什么资源都要自己创建，比如：我们有一个Person类，我们要创建一个对象要手动new一个  Person person = new Person();这没毛病，如果是简单的类，我们手动new是没问题的，但是当类复杂的时候，我们再去手动new就会变得十分复杂；于是有了被动获取的方式，下面来说被动获取</p>
+<h3 id="2-被动获取"><a href="#2-被动获取" class="headerlink" title="2.被动获取"></a>2.被动获取</h3><p> 被动获取，就是资源的创建都不是我们来完成，而是交给一个叫“容器”的东西来创建和设置，这样我们就不用new来new去的了；那容器是什么呢？容器就是用来管理所有的组件（就是有功能的类），假设Person类受容器管理，那么在我们需要创建Person对象的时候，容器就会自动创建对象，不用我们自己创建。容器把主动的new资源变为被动的接收；这里可以把容器比喻成婚介所，之前要想有个对象，你还要自己搭讪，约会，看电影什么的；现在你想要个对象，你就直接给婚介所说，他们帮你分配，中间的流程婚介所帮你办，大概就是这个意思；这就是IOC容器。</p>
+<h3 id="什么是DI"><a href="#什么是DI" class="headerlink" title="什么是DI"></a>什么是DI</h3><p>有一个与IOC同类的东西叫DI（Dependency Injection）即依赖注入，IOC是一种思想，那么DI就是对这种思想实现的描述；<br>容器能知道哪个类（BookServlet）运行的时候，需要另外一个类（BookService）；容器通过反射的形式，将容器中准备好的BookSeivice对象注入到BookServlet类中，这就是依赖注入；</p>
+<p>只要是容器管理的组件，都能使用容器提供的强大功能；</p>
+<p>下面通过写一个HelloWorld程序来体验一下Spring框架<br>用Spring框架编写有3个流程：<br>1.导包<br>因为我们要用IOC容器，所以我们导4个IOC核心容器包就行</p>
+<ul>
+<li>spring-beans-4.0.0.RELEASE.jar</li>
+<li>spring-context-4.0.0.RELEASE.jar</li>
+<li>spring-core-4.0.0.RELEASE.jar</li>
+<li>spring-expression-4.0.0.RELEASE.jar</li>
+</ul>
+<p>Spring运行的时候还要依赖一个日志包，因此还要导入 commons-logging-1.1.3.jar 包<br>把这5个包导入到 lib 目录下<br>然后右键 Add as Library…<br><img src="https://img-blog.csdnimg.cn/20210405104405895.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODM2OTIy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>2.写配置<br>       相当于在婚介所注册信息<br>       Spring配置文件中，集合了Spring的IOC容器管理的所有组件；<br>       下面创建配置文件，在src目录下右键New–&gt;XML Configuration File–&gt;Spring Config<br>       <img src="https://img-blog.csdnimg.cn/20210405104537479.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODM2OTIy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>然后创建一个Person类</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">&#123;</span>
 
-<span class="token keyword">public</span> <span class="token keyword">class</span> fenshuyichang <span class="token keyword">extends</span> <span class="token class-name">Exception</span><span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token function">fenshuyichang</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token comment">//无参构造</span>
-    <span class="token keyword">public</span> <span class="token function">fenshuyichang</span><span class="token punctuation">(</span><span class="token class-name">String</span> message<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>  <span class="token comment">//有参构造</span>
-        <span class="token keyword">super</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//调用父类的有参构造，super关键字必须要在第一行</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> lastname<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">Integer</span> age<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> gender<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> email<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getLastname</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> lastname<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<hr>
-<h2 id="然后定义一个teacher类"><a href="#然后定义一个teacher类" class="headerlink" title="然后定义一个teacher类"></a>然后定义一个teacher类</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">yc</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Scanner</span><span class="token punctuation">;</span>
 
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Teacher</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> fenshu <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token punctuation">)</span> <span class="token keyword">throws</span> fenshuyichang<span class="token comment">//抛出异常，以后谁调用这个方法，谁来处理此异常&#123;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">&lt;</span><span class="token number">0</span><span class="token operator">||</span>i<span class="token operator">></span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token function">fenshuyichang</span><span class="token punctuation">(</span><span class="token string">"你输入的分数有误，分数应在0到100之间"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//抛出异常类的对象</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">else</span><span class="token punctuation">&#123;</span>
-            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"分数正常"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setLastname</span><span class="token punctuation">(</span><span class="token class-name">String</span> lastname<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>lastname <span class="token operator">=</span> lastname<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<hr>
-<h2 id="然后写main方法，输入分数，并且调用fenshu方法来判断分数是否正常"><a href="#然后写main方法，输入分数，并且调用fenshu方法来判断分数是否正常" class="headerlink" title="然后写main方法，输入分数，并且调用fenshu方法来判断分数是否正常"></a>然后写main方法，输入分数，并且调用fenshu方法来判断分数是否正常</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">yc</span><span class="token punctuation">;</span>
 
-<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Scanner</span><span class="token punctuation">;</span>
-
-<span class="token keyword">public</span> <span class="token keyword">class</span> shuru <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token class-name">Scanner</span> i<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Scanner</span><span class="token punctuation">(</span><span class="token class-name">System</span><span class="token punctuation">.</span>in<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> a<span class="token operator">=</span>i<span class="token punctuation">.</span><span class="token function">nextInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token class-name">Teacher</span> teacher <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Teacher</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
-            teacher<span class="token punctuation">.</span><span class="token function">fenshu</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">catch</span> <span class="token punctuation">(</span>fenshuyichang b<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-            b<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
+    <span class="token keyword">public</span> <span class="token class-name">Integer</span> <span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> age<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>运行结果：<br>由于分数在0到100之间，所以分数正常<img src="https://img-blog.csdnimg.cn/20201108132556604.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODM2OTIy,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>由于分数不在0-100之间，所以Java提示异常<img src="https://img-blog.csdnimg.cn/20201108132854593.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODM2OTIy,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/20201108132727410.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODM2OTIy,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>以上就是自定义异常的内容</p>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setAge</span><span class="token punctuation">(</span><span class="token class-name">Integer</span> age<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getGender</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> gender<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setGender</span><span class="token punctuation">(</span><span class="token class-name">String</span> gender<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>gender <span class="token operator">=</span> gender<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getEmail</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> email<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setEmail</span><span class="token punctuation">(</span><span class="token class-name">String</span> email<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>email <span class="token operator">=</span> email<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token class-name">String</span> lastname<span class="token punctuation">,</span> <span class="token class-name">Integer</span> age<span class="token punctuation">,</span> <span class="token class-name">String</span> gender<span class="token punctuation">,</span> <span class="token class-name">String</span> email<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>lastname <span class="token operator">=</span> lastname<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>gender <span class="token operator">=</span> gender<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>email <span class="token operator">=</span> email<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token string">"Person&#123;"</span> <span class="token operator">+</span>
+                <span class="token string">"lastname='"</span> <span class="token operator">+</span> lastname <span class="token operator">+</span> <span class="token string">'\''</span> <span class="token operator">+</span>
+                <span class="token string">", age="</span> <span class="token operator">+</span> age <span class="token operator">+</span>
+                <span class="token string">", gender='"</span> <span class="token operator">+</span> gender <span class="token operator">+</span> <span class="token string">'\''</span> <span class="token operator">+</span>
+                <span class="token string">", email='"</span> <span class="token operator">+</span> email <span class="token operator">+</span> <span class="token string">'\''</span> <span class="token operator">+</span>
+                <span class="token string">'&#125;'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这个类是要在xml文件中注册的，到时候我们就不用自己创建这个类的对象了</p>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>beans</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.springframework.org/schema/beans<span class="token punctuation">"</span></span>
+       <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>
+       <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+       
+       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>person<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>SpringIOC.Person<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>age<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>20<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>email<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2837169083@qq.com<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>gender<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>男<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>lastname<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>巩淼磊<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>beans</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>首先先写一个bean标签 class属性填写你要注册的类，id属性是给你这个类起别名；在bean标签内通过property标签对Person的属性进行赋值</p>
+<p>3.测试<br>写一个SpringIOCTest类进行测试</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token class-name">SpringIOCTest</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token class-name">SpringIOC<span class="token punctuation">.</span>Person</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>junit<span class="token punctuation">.</span></span><span class="token class-name">Test</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span></span><span class="token class-name">ApplicationContext</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>support<span class="token punctuation">.</span></span><span class="token class-name">ClassPathXmlApplicationContext</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * @author gml
+ * @date 2021/4/4
+ **/</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SpringIOCTest</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token class-name">ApplicationContext</span> ioc <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ClassPathXmlApplicationContext</span><span class="token punctuation">(</span><span class="token string">"ioc.xml"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Person</span> person <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Person</span><span class="token punctuation">)</span>ioc<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span><span class="token string">"person"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>person<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>其中ApplicationContext ioc = new ClassPathXmlApplicationContext(“ioc.xml”);是用来获取配置文件的地址；<br>然后调用getBean方法，参数写刚才配置的别名；这时把person对象打印出来，结果是：<br><img src="https://img-blog.csdnimg.cn/20210405110117738.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODM2OTIy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>对象获取成功，可以看出我在这里并没有new对象，完全是IOC容器帮我做的，我只是获取了一下对象，以上就是IOC容器的全部内容；<br>其中有不足或错误的地方，欢迎指正，不胜感激。</p>
 
                 
             </div>
@@ -538,7 +607,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://gongmiaolei.github.io/2021/04/02/java-zhong-guan-yu-zi-ding-yi-yi-chang-de-wen-ti/">http://gongmiaolei.github.io/2021/04/02/java-zhong-guan-yu-zi-ding-yi-yi-chang-de-wen-ti/</a>
+                    <a href="http://gongmiaolei.github.io/2021/04/02/spring-kuang-jia-ioc-gai-shu/">http://gongmiaolei.github.io/2021/04/02/spring-kuang-jia-ioc-gai-shu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -747,13 +816,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/04/02/spring-kuang-jia-ioc-gai-shu/">
+                <a href="/2021/04/02/jdbc-lian-jie-shu-ju-ku-de-5-chong-fang-shi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Spring框架IOC概述">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="JDBC连接数据库的5种方式">
                         
-                        <span class="card-title">Spring框架IOC概述</span>
+                        <span class="card-title">JDBC连接数据库的5种方式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -781,7 +850,7 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/2021/04/02/java-zhong-guan-yu-zi-ding-yi-yi-chang-de-wen-ti/">
@@ -811,7 +880,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
